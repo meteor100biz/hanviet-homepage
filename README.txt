@@ -1,23 +1,19 @@
-Han-Viet Homepage Policy Update
+HAN-VIET COUPLE HOMEPAGE v3
 
-교체/추가 위치:
+업로드 방법:
+1. 이 압축파일을 풀어 GitHub 저장소 루트에 그대로 업로드합니다.
+2. index.html, process.html, fee.html, style.css, images 폴더를 기존 파일에 덮어씁니다.
+3. GitHub에서 Commit changes를 누르면 Vercel이 자동 배포합니다.
 
-[교체]
-- index.html -> /index.html
-- process.html -> /process.html
-- fee.html -> /fee.html
-- style.css -> /style.css
+주요 이미지 파일:
+- images/logo.png : 한베커플 로고
+- images/hero-background.jpg : 메인 Hero 배경
+- images/ceo.jpg : 대표 부부 사진(튤립 사진)
+- images/ceo-family.jpg : 대표 가족 사진
+- images/gallery-*.jpg : 베트남 이야기 갤러리 이미지
 
-[신규 추가]
-- terms.html -> /terms.html
-- privacy.html -> /privacy.html
-- compensation.html -> /compensation.html
+상담 신청 링크:
+https://naver.me/x3cYfflK
 
-[이미지 폴더]
-- images 폴더는 기존 것을 그대로 사용하면 됩니다. 이번 업데이트에는 새 이미지가 필요하지 않습니다.
-
-반영 내용:
-- Footer에 사업자등록번호, 허가번호, 이용약관, 개인정보처리방침, 손해배상 청구절차 링크 추가
-- terms.html: 국제결혼중개 표준약관 페이지 추가
-- privacy.html: 개인정보처리방침 페이지 추가
-- compensation.html: 손해배상 청구절차 및 보증보험 가입 현황 페이지 추가
+홈페이지 주소:
+https://hanviet.co.kr/
