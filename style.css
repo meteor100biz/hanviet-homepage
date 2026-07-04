@@ -153,17 +153,28 @@ p { line-height:1.75; }
 .fee-note p { color:var(--muted); }
 
 /* Footer */
-.site-footer { padding:46px 56px; display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:38px; background:var(--navy-dark); color:#fff; }
+.site-footer {
+  padding:46px 56px;
+  display:grid;
+  grid-template-columns:1.15fr 1fr 1.25fr .9fr;
+  gap:38px;
+  align-items:start;
+  background:var(--navy-dark);
+  color:#fff;
+}
 .footer-brand { display:flex; gap:12px; align-items:center; }
 .footer-brand img { width:56px; height:56px; object-fit:contain; background:#fff; border-radius:50%; padding:5px; }
 .footer-brand strong { display:block; font-size:28px; }
 .footer-brand span { color:#f0c885; font-size:12px; letter-spacing:2px; }
 .site-footer h4 { margin-bottom:10px; font-size:18px; }
 .site-footer p { color:rgba(255,255,255,.78); line-height:1.9; }
+.site-footer a { color:rgba(255,255,255,.78); }
+.site-footer a:hover { color:#f0c885; text-decoration:underline; }
 
 /* Responsive */
 @media (max-width: 1180px) {
   .main-nav { display:none; }
+  .site-footer { grid-template-columns:repeat(2, minmax(0,1fr)); }
   .hero { padding-bottom:210px; }
   .license-badge { right:32px; }
   .info-panel { grid-template-columns:1fr; width:calc(100% - 64px); left:32px; right:32px; }
