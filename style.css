@@ -234,6 +234,15 @@ p { line-height:1.75; }
 .form-submit { width:100%; border:0; cursor:pointer; font-size:18px; }
 .form-submit:disabled { opacity:.65; cursor:not-allowed; }
 
+
+
+.consent-detail { margin-top:18px; padding:20px; border:1px solid #e3edf8; border-radius:16px; background:#f8fbff; }
+.consent-detail:first-of-type { margin-top:0; }
+.consent-detail h3 { margin-bottom:14px; color:var(--navy-dark); font-size:19px; }
+.consent-detail dl { display:grid; gap:8px; margin-bottom:16px; }
+.consent-detail dt { color:var(--navy); font-weight:900; }
+.consent-detail dd { color:var(--muted); line-height:1.7; margin-bottom:8px; }
+
 @media (max-width: 760px) {
   .form-card { padding:24px 18px; }
   .form-grid, .form-grid.two { grid-template-columns:1fr; }

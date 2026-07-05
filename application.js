@@ -33,9 +33,40 @@
     return el && el.files && el.files[0] ? el.files[0] : null;
   }
 
+  function isNetworkFetchError(error) {
+    const message = String(error && error.message ? error.message : error || '');
+    return /failed to fetch|networkerror|load failed|fetch/i.test(message);
+  }
+
+  function explainNetworkError(target) {
+    const localFileNotice = window.location.protocol === 'file:'
+      ? ' 현재 파일을 file:// 방식으로 직접 열고 있어 브라우저가 Supabase 요청을 차단할 수 있습니다.'
+      : '';
+
+    return `${target} 실패: Supabase 서버에 연결하지 못했습니다.${localFileNotice} `
+      + 'Vercel 배포 주소 또는 http://localhost 테스트 서버에서 다시 확인하고, '
+      + 'supabase-config.js의 Publishable key 전체값과 Storage bucket/member-photo 정책을 확인하세요.';
+  }
+
   function validateConfig() {
-    if (!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_KEY.includes('PASTE_YOUR')) {
+    if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+      throw new Error('Supabase 라이브러리를 불러오지 못했습니다. 인터넷 연결 또는 CDN 차단 여부를 확인하세요.');
+    }
+
+    if (!SUPABASE_URL || !/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(SUPABASE_URL)) {
+      throw new Error('Supabase URL 형식이 올바르지 않습니다. supabase-config.js 파일을 확인하세요.');
+    }
+
+    if (!SUPABASE_KEY || SUPABASE_KEY.includes('PASTE_YOUR')) {
       throw new Error('Supabase Publishable key가 아직 입력되지 않았습니다. supabase-config.js 파일을 확인하세요.');
+    }
+
+    if (SUPABASE_KEY.startsWith('sb_secret_')) {
+      throw new Error('Secret key는 홈페이지에 넣으면 안 됩니다. Publishable key를 입력하세요.');
+    }
+
+    if (!SUPABASE_KEY.startsWith('sb_publishable_') && !SUPABASE_KEY.startsWith('eyJ')) {
+      throw new Error('Supabase 키는 Publishable key 또는 legacy anon public key를 사용해야 합니다.');
     }
   }
 
@@ -66,17 +97,48 @@
 
     const random = Math.random().toString(36).slice(2, 10);
     const path = `applications/${Date.now()}-${random}-${label}.${safeExt(file)}`;
-    const { error } = await client.storage.from(BUCKET).upload(path, file, {
-      cacheControl: '3600',
-      upsert: false,
-      contentType: file.type || undefined
-    });
 
-    if (error) {
-      throw new Error(`사진 업로드 실패: ${error.message}`);
+    let result;
+    try {
+      result = await client.storage.from(BUCKET).upload(path, file, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: file.type || undefined
+      });
+    } catch (error) {
+      if (isNetworkFetchError(error)) {
+        throw new Error(explainNetworkError('사진 업로드'));
+      }
+      throw error;
+    }
+
+    if (result.error) {
+      if (isNetworkFetchError(result.error)) {
+        throw new Error(explainNetworkError('사진 업로드'));
+      }
+      throw new Error(`사진 업로드 실패: ${result.error.message}`);
     }
 
     return path;
+  }
+
+  async function insertApplication(client, payload) {
+    let result;
+    try {
+      result = await client.from('applications').insert(payload);
+    } catch (error) {
+      if (isNetworkFetchError(error)) {
+        throw new Error(explainNetworkError('신청서 저장'));
+      }
+      throw error;
+    }
+
+    if (result.error) {
+      if (isNetworkFetchError(result.error)) {
+        throw new Error(explainNetworkError('신청서 저장'));
+      }
+      throw new Error(`신청서 저장 실패: ${result.error.message}`);
+    }
   }
 
   form.addEventListener('submit', async function (event) {
@@ -116,10 +178,7 @@
         agree_third_party: true
       };
 
-      const { error } = await client.from('applications').insert(payload);
-      if (error) {
-        throw new Error(`신청서 저장 실패: ${error.message}`);
-      }
+      await insertApplication(client, payload);
 
       form.reset();
       setStatus('신청서가 정상 접수되었습니다. 확인 후 순서대로 연락드리겠습니다.', 'success');

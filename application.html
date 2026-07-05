@@ -90,9 +90,45 @@
 
       <div class="form-card consent-card">
         <h2>동의 사항</h2>
-        <label class="check-row"><input type="checkbox" name="agree_privacy" required /> 개인정보 수집·이용에 동의합니다.</label>
-        <label class="check-row"><input type="checkbox" name="agree_third_party" required /> 국제결혼 상담 및 매칭 진행을 위한 제3자 제공에 동의합니다.</label>
-        <p class="form-help">자세한 내용은 개인정보처리방침 및 상담 과정에서 별도로 안내드립니다.</p>
+
+        <div class="consent-detail">
+          <h3>개인정보 수집·이용 동의</h3>
+          <dl>
+            <dt>수집 및 이용하는 개인정보 항목</dt>
+            <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
+
+            <dt>수집 및 이용 목적</dt>
+            <dd>국제결혼 상담, 회원관리, 상대방 소개, 매칭 진행, 영상통화 주선 및 성혼 지원</dd>
+
+            <dt>보유 및 이용기간</dt>
+            <dd>회원 탈퇴 또는 계약 종료 후 5년. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.</dd>
+
+            <dt>동의 거부에 따른 안내</dt>
+            <dd>개인정보 수집·이용에 동의하지 않을 경우 매칭 신청서 제출 및 상담 진행이 제한될 수 있습니다.</dd>
+          </dl>
+          <label class="check-row"><input type="checkbox" name="agree_privacy" required /> 위 개인정보 수집·이용 내용에 동의합니다.</label>
+        </div>
+
+        <div class="consent-detail">
+          <h3>개인정보 제3자 제공 동의</h3>
+          <dl>
+            <dt>제공받는 자</dt>
+            <dd>국내외 협력업체 및 결혼상담 대상자</dd>
+
+            <dt>제공받는 자의 이용 목적</dt>
+            <dd>국제결혼 상대자 소개 및 매칭 진행</dd>
+
+            <dt>제공하는 항목</dt>
+            <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
+
+            <dt>제공받는 자의 보유 및 이용기간</dt>
+            <dd>매칭 종료 시까지 또는 제공 목적 달성 시까지</dd>
+
+            <dt>동의 거부에 따른 안내</dt>
+            <dd>제3자 제공에 동의하지 않을 경우 국제결혼 상담 및 매칭 진행이 제한될 수 있습니다.</dd>
+          </dl>
+          <label class="check-row"><input type="checkbox" name="agree_third_party" required /> 위 개인정보 제3자 제공 내용에 동의합니다.</label>
+        </div>
       </div>
 
       <div id="applicationStatus" class="form-status" aria-live="polite"></div>
