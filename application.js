@@ -38,14 +38,26 @@
     return /failed to fetch|networkerror|load failed|fetch/i.test(message);
   }
 
+  function formatSupabaseError(target, error) {
+    const parts = [];
+    if (error.statusCode || error.status) parts.push(`상태: ${error.statusCode || error.status}`);
+    if (error.error) parts.push(`코드: ${error.error}`);
+    if (error.name && error.name !== 'Error') parts.push(`종류: ${error.name}`);
+    if (error.message) parts.push(`내용: ${error.message}`);
+    if (error.hint) parts.push(`힌트: ${error.hint}`);
+    if (error.details) parts.push(`상세: ${error.details}`);
+
+    return `${target} 실패: ${parts.length ? parts.join(' / ') : 'Supabase에서 오류가 반환되었습니다.'}`;
+  }
+
   function explainNetworkError(target) {
     const localFileNotice = window.location.protocol === 'file:'
       ? ' 현재 파일을 file:// 방식으로 직접 열고 있어 브라우저가 Supabase 요청을 차단할 수 있습니다.'
       : '';
 
-    return `${target} 실패: Supabase 서버에 연결하지 못했습니다.${localFileNotice} `
-      + 'Vercel 배포 주소 또는 http://localhost 테스트 서버에서 다시 확인하고, '
-      + 'supabase-config.js의 Publishable key 전체값과 Storage bucket/member-photo 정책을 확인하세요.';
+    return `${target} 실패: 브라우저가 Supabase 요청을 완료하지 못했습니다.${localFileNotice} `
+      + '배포 주소에서 Ctrl+F5로 새로고침한 뒤 다시 확인하세요. 계속 실패하면 브라우저 개발자도구 Console/Network에 표시되는 '
+      + 'storage/v1 요청의 상태 코드를 확인해야 합니다.';
   }
 
   function validateConfig() {
@@ -106,17 +118,19 @@
         contentType: file.type || undefined
       });
     } catch (error) {
+      console.error('Photo upload request failed', error);
       if (isNetworkFetchError(error)) {
         throw new Error(explainNetworkError('사진 업로드'));
       }
-      throw error;
+      throw new Error(formatSupabaseError('사진 업로드', error));
     }
 
     if (result.error) {
+      console.error('Photo upload returned an error', result.error);
       if (isNetworkFetchError(result.error)) {
         throw new Error(explainNetworkError('사진 업로드'));
       }
-      throw new Error(`사진 업로드 실패: ${result.error.message}`);
+      throw new Error(formatSupabaseError('사진 업로드', result.error));
     }
 
     return path;
@@ -127,17 +141,19 @@
     try {
       result = await client.from('applications').insert(payload);
     } catch (error) {
+      console.error('Application insert request failed', error);
       if (isNetworkFetchError(error)) {
         throw new Error(explainNetworkError('신청서 저장'));
       }
-      throw error;
+      throw new Error(formatSupabaseError('신청서 저장', error));
     }
 
     if (result.error) {
+      console.error('Application insert returned an error', result.error);
       if (isNetworkFetchError(result.error)) {
         throw new Error(explainNetworkError('신청서 저장'));
       }
-      throw new Error(`신청서 저장 실패: ${result.error.message}`);
+      throw new Error(formatSupabaseError('신청서 저장', result.error));
     }
   }
 
@@ -183,6 +199,7 @@
       form.reset();
       setStatus('신청서가 정상 접수되었습니다. 확인 후 순서대로 연락드리겠습니다.', 'success');
     } catch (error) {
+      console.error('Application submit failed', error);
       setStatus(error.message || '제출 중 오류가 발생했습니다.', 'error');
     } finally {
       submitButton.disabled = false;
