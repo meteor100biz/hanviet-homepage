@@ -6,6 +6,95 @@
   <title>매칭 신청서 | 한베커플 국제결혼</title>
   <meta name="description" content="한베커플 베트남 국제결혼 매칭 신청서입니다. 기본 상담 정보와 사진을 제출하시면 순서대로 연락드립니다." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .optional-mark {
+      color: #6b7280;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+
+    .consent-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .consent-detail {
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .consent-detail dl {
+      margin-bottom: 14px;
+    }
+
+    .consent-detail dt {
+      margin-top: 10px;
+    }
+
+    .check-row {
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .check-row input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      accent-color: #2563eb;
+    }
+
+    .success-dialog {
+      width: min(420px, calc(100% - 32px));
+      border: 0;
+      border-radius: 12px;
+      padding: 0;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+    }
+
+    .success-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.42);
+    }
+
+    .success-dialog-box,
+    .success-screen-box {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .success-dialog-box h2,
+    .success-screen-box h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    .success-dialog-box p,
+    .success-screen-box p {
+      margin: 0 0 22px;
+      color: #4b5563;
+      line-height: 1.65;
+    }
+
+    .success-screen {
+      display: none;
+      min-height: 52vh;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 20px;
+    }
+
+    .success-screen.is-visible {
+      display: flex;
+    }
+
+    @media (min-width: 900px) {
+      .consent-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+      }
+    }
+  </style>
 </head>
 <body>
 <header class="site-header">
@@ -25,13 +114,13 @@
 </header>
 
 <main>
-  <section class="sub-hero application-hero">
+  <section class="sub-hero application-hero" data-application-content>
     <p class="eyebrow">APPLICATION</p>
     <h1>베트남 국제결혼 매칭 신청서</h1>
     <p>제출하신 정보는 상담, 매칭 검토, 상대방 소개 및 진행 안내 목적으로만 사용됩니다.</p>
   </section>
 
-  <section class="section application-section">
+  <section class="section application-section" data-application-content>
     <form id="applicationForm" class="application-form">
       <div class="form-card">
         <h2>기본 정보</h2>
@@ -49,9 +138,9 @@
             </select>
           </label>
           <label>직업 <input type="text" name="job" required placeholder="직업 또는 업종" /></label>
-          <label>키(cm) <input type="number" name="height" min="130" max="220" placeholder="예: 175" /></label>
-          <label>몸무게(kg) <input type="number" name="weight" min="35" max="180" placeholder="예: 72" /></label>
-          <label>음주
+          <label>키(cm) <span class="optional-mark">(선택)</span> <input type="number" name="height" min="130" max="220" placeholder="예: 175" /></label>
+          <label>몸무게(kg) <span class="optional-mark">(선택)</span> <input type="number" name="weight" min="35" max="180" placeholder="예: 72" /></label>
+          <label>음주 <span class="optional-mark">(선택)</span>
             <select name="drink">
               <option value="">선택</option>
               <option value="안함">안함</option>
@@ -59,7 +148,7 @@
               <option value="자주">자주</option>
             </select>
           </label>
-          <label>흡연
+          <label>흡연 <span class="optional-mark">(선택)</span>
             <select name="smoke">
               <option value="">선택</option>
               <option value="안함">안함</option>
@@ -83,51 +172,53 @@
         <h2>사진 첨부</h2>
         <p class="form-help">사진은 jpg, jpeg, png, webp 형식만 가능하며 1장당 최대 8MB까지 업로드됩니다.</p>
         <div class="form-grid two">
-          <label>얼굴 사진 <input type="file" name="photo_face" accept="image/jpeg,image/png,image/webp" /></label>
-          <label>전신 또는 자연스러운 사진 <input type="file" name="photo_body" accept="image/jpeg,image/png,image/webp" /></label>
+          <label>얼굴 사진 <span class="optional-mark">(선택)</span> <input type="file" name="photo_face" accept="image/jpeg,image/png,image/webp" /></label>
+          <label>전신 또는 자연스러운 사진 <span class="optional-mark">(선택)</span> <input type="file" name="photo_body" accept="image/jpeg,image/png,image/webp" /></label>
         </div>
       </div>
 
       <div class="form-card consent-card">
         <h2>동의 사항</h2>
 
-        <div class="consent-detail">
-          <h3>개인정보 수집·이용 동의</h3>
-          <dl>
-            <dt>수집 및 이용하는 개인정보 항목</dt>
-            <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
+        <div class="consent-grid">
+          <div class="consent-detail">
+            <h3>개인정보 수집·이용 동의</h3>
+            <dl>
+              <dt>수집 및 이용하는 개인정보 항목</dt>
+              <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
 
-            <dt>수집 및 이용 목적</dt>
-            <dd>국제결혼 상담, 회원관리, 상대방 소개, 매칭 진행, 영상통화 주선 및 성혼 지원</dd>
+              <dt>수집 및 이용 목적</dt>
+              <dd>국제결혼 상담, 회원관리, 상대방 소개, 매칭 진행, 영상통화 주선 및 성혼 지원</dd>
 
-            <dt>보유 및 이용기간</dt>
-            <dd>회원 탈퇴 또는 계약 종료 후 5년. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.</dd>
+              <dt>보유 및 이용기간</dt>
+              <dd>회원 탈퇴 또는 계약 종료 후 5년. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.</dd>
 
-            <dt>동의 거부에 따른 안내</dt>
-            <dd>개인정보 수집·이용에 동의하지 않을 경우 매칭 신청서 제출 및 상담 진행이 제한될 수 있습니다.</dd>
-          </dl>
-          <label class="check-row"><input type="checkbox" name="agree_privacy" required /> 위 개인정보 수집·이용 내용에 동의합니다.</label>
-        </div>
+              <dt>동의 거부에 따른 안내</dt>
+              <dd>개인정보 수집·이용에 동의하지 않을 경우 매칭 신청서 제출 및 상담 진행이 제한될 수 있습니다.</dd>
+            </dl>
+            <label class="check-row"><input type="checkbox" name="agree_privacy" required /> 위 개인정보 수집·이용 내용에 동의합니다.</label>
+          </div>
 
-        <div class="consent-detail">
-          <h3>개인정보 제3자 제공 동의</h3>
-          <dl>
-            <dt>제공받는 자</dt>
-            <dd>국내외 협력업체 및 결혼상담 대상자</dd>
+          <div class="consent-detail">
+            <h3>개인정보 제3자 제공 동의</h3>
+            <dl>
+              <dt>제공받는 자</dt>
+              <dd>국내외 협력업체 및 결혼상담 대상자</dd>
 
-            <dt>제공받는 자의 이용 목적</dt>
-            <dd>국제결혼 상대자 소개 및 매칭 진행</dd>
+              <dt>제공받는 자의 이용 목적</dt>
+              <dd>국제결혼 상대자 소개 및 매칭 진행</dd>
 
-            <dt>제공하는 항목</dt>
-            <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
+              <dt>제공하는 항목</dt>
+              <dd>성명, 연락처, 출생연도, 거주지역, 직업, 혼인여부, 키·체중, 가족사항, 자기소개, 사진 등 신청서 기재 정보</dd>
 
-            <dt>제공받는 자의 보유 및 이용기간</dt>
-            <dd>매칭 종료 시까지 또는 제공 목적 달성 시까지</dd>
+              <dt>제공받는 자의 보유 및 이용기간</dt>
+              <dd>매칭 종료 시까지 또는 제공 목적 달성 시까지</dd>
 
-            <dt>동의 거부에 따른 안내</dt>
-            <dd>제3자 제공에 동의하지 않을 경우 국제결혼 상담 및 매칭 진행이 제한될 수 있습니다.</dd>
-          </dl>
-          <label class="check-row"><input type="checkbox" name="agree_third_party" required /> 위 개인정보 제3자 제공 내용에 동의합니다.</label>
+              <dt>동의 거부에 따른 안내</dt>
+              <dd>제3자 제공에 동의하지 않을 경우 국제결혼 상담 및 매칭 진행이 제한될 수 있습니다.</dd>
+            </dl>
+            <label class="check-row"><input type="checkbox" name="agree_third_party" required /> 위 개인정보 제3자 제공 내용에 동의합니다.</label>
+          </div>
         </div>
       </div>
 
@@ -135,7 +226,23 @@
       <button class="btn btn-primary form-submit" type="submit">매칭 신청서 제출하기</button>
     </form>
   </section>
+
+  <section id="applicationSuccessScreen" class="success-screen" aria-live="polite">
+    <div class="success-screen-box">
+      <h2>신청서가 정상 접수되었습니다.</h2>
+      <p>확인 후 순서대로 연락드리겠습니다.</p>
+      <button class="btn btn-primary" type="button" data-go-home>확인</button>
+    </div>
+  </section>
 </main>
+
+<dialog id="applicationSuccessDialog" class="success-dialog" aria-labelledby="successDialogTitle">
+  <div class="success-dialog-box">
+    <h2 id="successDialogTitle">신청서가 정상 접수되었습니다.</h2>
+    <p>확인 후 순서대로 연락드리겠습니다.</p>
+    <button class="btn btn-primary" type="button" data-close-success>확인</button>
+  </div>
+</dialog>
 
 <footer class="site-footer">
   <div class="footer-brand"><img src="images/logo.png" alt="한베커플 로고"><div><strong>한베커플</strong><span>HAN-VIET COUPLE</span></div></div>
@@ -147,5 +254,60 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="application.js"></script>
+<script>
+  (function () {
+    const statusBox = document.getElementById('applicationStatus');
+    const dialog = document.getElementById('applicationSuccessDialog');
+    const successScreen = document.getElementById('applicationSuccessScreen');
+    const contentBlocks = document.querySelectorAll('[data-application-content]');
+    const successMessage = '신청서가 정상 접수되었습니다.';
+    let handled = false;
+
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+
+    function showSuccessScreen() {
+      contentBlocks.forEach((block) => {
+        block.style.display = 'none';
+      });
+      successScreen.classList.add('is-visible');
+      successScreen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function showSuccessDialog() {
+      if (handled) return;
+      handled = true;
+
+      try {
+        if (dialog && typeof dialog.showModal === 'function') {
+          dialog.showModal();
+          return;
+        }
+      } catch (error) {
+        console.warn('Success dialog could not be opened.', error);
+      }
+
+      showSuccessScreen();
+    }
+
+    if (statusBox) {
+      const observer = new MutationObserver(() => {
+        if (statusBox.textContent.includes(successMessage)) {
+          showSuccessDialog();
+        }
+      });
+      observer.observe(statusBox, { childList: true, characterData: true, subtree: true });
+    }
+
+    document.querySelectorAll('[data-close-success], [data-go-home]').forEach((button) => {
+      button.addEventListener('click', goHome);
+    });
+
+    if (dialog) {
+      dialog.addEventListener('close', goHome);
+    }
+  })();
+</script>
 </body>
 </html>
