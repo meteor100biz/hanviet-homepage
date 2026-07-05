@@ -16,15 +16,20 @@
     .consent-grid {
       display: grid;
       gap: 16px;
+      align-items: stretch;
     }
 
     .consent-detail {
       font-size: 0.92rem;
       line-height: 1.55;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .consent-detail dl {
       margin-bottom: 14px;
+      flex: 1;
     }
 
     .consent-detail dt {
@@ -46,11 +51,15 @@
     }
 
     .success-dialog {
-      width: min(420px, calc(100% - 32px));
+      width: min(440px, calc(100% - 32px));
       border: 0;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 0;
-      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.28);
+      position: fixed;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
     }
 
     .success-dialog::backdrop {
@@ -229,8 +238,8 @@
 
   <section id="applicationSuccessScreen" class="success-screen" aria-live="polite">
     <div class="success-screen-box">
-      <h2>신청서가 정상 접수되었습니다.</h2>
-      <p>확인 후 순서대로 연락드리겠습니다.</p>
+      <h2>신청해 주셔서 감사합니다.</h2>
+      <p>소중한 인연을 찾는 첫걸음이 접수되었습니다. 내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
       <button class="btn btn-primary" type="button" data-go-home>확인</button>
     </div>
   </section>
@@ -238,8 +247,8 @@
 
 <dialog id="applicationSuccessDialog" class="success-dialog" aria-labelledby="successDialogTitle">
   <div class="success-dialog-box">
-    <h2 id="successDialogTitle">신청서가 정상 접수되었습니다.</h2>
-    <p>확인 후 순서대로 연락드리겠습니다.</p>
+    <h2 id="successDialogTitle">신청해 주셔서 감사합니다.</h2>
+    <p>소중한 인연을 찾는 첫걸음이 접수되었습니다. 내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
     <button class="btn btn-primary" type="button" data-close-success>확인</button>
   </div>
 </dialog>
@@ -260,7 +269,7 @@
     const dialog = document.getElementById('applicationSuccessDialog');
     const successScreen = document.getElementById('applicationSuccessScreen');
     const contentBlocks = document.querySelectorAll('[data-application-content]');
-    const successMessage = '신청서가 정상 접수되었습니다.';
+    const successMessages = ['신청서가 정상 접수되었습니다.', '신청해 주셔서 감사합니다.'];
     let handled = false;
 
     function goHome() {
@@ -293,7 +302,7 @@
 
     if (statusBox) {
       const observer = new MutationObserver(() => {
-        if (statusBox.textContent.includes(successMessage)) {
+        if (successMessages.some((message) => statusBox.textContent.includes(message))) {
           showSuccessDialog();
         }
       });
