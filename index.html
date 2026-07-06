@@ -63,23 +63,23 @@
     <div class="section-heading">
       <p class="eyebrow">RECENT PROFILE STATUS</p>
       <h2 id="recentStatusTitle">최근 베트남 여성회원 접수 현황</h2>
-      <p>현지 협력사를 통해 접수된 결혼 희망 프로필은 상담 절차 후 적합한 범위에서 안내드립니다.</p>
+      <p>월별 접수 규모와 주차별 접수 현황을 안내드립니다. 세부 내용은 상담 후 확인합니다.</p>
     </div>
 
     <div class="status-panel">
       <div class="status-summary">
         <span class="status-medal">현</span>
-        <p>2026년 7월 현재</p>
-        <strong>25명 접수</strong>
-        <span>사진 공개가 아닌 접수 규모 안내입니다.</span>
+        <p id="statusMonth">2026년 7월 현재</p>
+        <strong id="statusTotal">25명 접수</strong>
+        <span id="statusSummaryNote">월 통합 접수 현황입니다.</span>
       </div>
 
-      <div class="status-list" aria-label="주차별 접수 현황">
+      <div class="status-list" id="weeklyStatusList" aria-label="주차별 접수 현황">
         <article class="status-card">
           <p>7월 1주</p>
           <strong>11</strong>
           <span>명 접수</span>
-          <small>현지 확인 중</small>
+          <small>상담 가능</small>
         </article>
         <article class="status-card">
           <p>7월 2주</p>
@@ -87,24 +87,12 @@
           <span>명 접수</span>
           <small>상담 가능</small>
         </article>
-        <article class="status-card muted">
-          <p>7월 3주</p>
-          <strong>예정</strong>
-          <span>업데이트</span>
-          <small>확인 중</small>
-        </article>
-        <article class="status-card muted">
-          <p>7월 4주</p>
-          <strong>예정</strong>
-          <span>업데이트</span>
-          <small>확인 중</small>
-        </article>
       </div>
     </div>
 
     <div class="status-notice">
       <span>i</span>
-      <p><b>안내</b> 개별 사진과 상세 프로필은 본인 동의 및 상담 절차에 따라 제한적으로 제공됩니다.</p>
+      <p id="statusNotice"><b>안내</b> 상담 가능 여부는 한베커플과의 상담 가능 상태를 의미하며, 실제 혼인 진행 가능 여부는 상담 후 개별 확인합니다.</p>
       <a class="btn btn-primary" href="application.html">매칭 신청하기</a>
     </div>
   </section>
@@ -204,5 +192,6 @@
 </div>
 
 </footer>
+<script src="js/recent-status.js"></script>
 </body>
 </html>
