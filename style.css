@@ -77,6 +77,147 @@ p { line-height:1.75; }
 .text-link { display:inline-flex; justify-content:center; font-weight:900; color:var(--blue); }
 
 /* Why + story */
+.status-section { background:linear-gradient(180deg,var(--ivory),#f7fbff); }
+.status-panel {
+  max-width:1220px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:28px;
+  padding:34px;
+  background:#fff;
+  border:1px solid #dbe9f6;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+.status-summary {
+  min-height:250px;
+  padding:32px;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--navy),#0d3f8b);
+  color:#fff;
+}
+.status-medal {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:66px;
+  height:66px;
+  margin-bottom:22px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f6d48b,#b9802d);
+  box-shadow:inset 0 0 0 4px rgba(255,255,255,.32);
+  font-size:28px;
+  font-weight:900;
+}
+.status-summary p {
+  color:#f8dfb2;
+  font-weight:900;
+  line-height:1.4;
+}
+.status-summary strong {
+  display:block;
+  margin:8px 0 14px;
+  font-size:46px;
+  line-height:1.15;
+  letter-spacing:-1.5px;
+}
+.status-summary span:not(.status-medal) {
+  color:rgba(255,255,255,.8);
+  font-size:14px;
+  line-height:1.6;
+}
+.status-list {
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:16px;
+}
+.status-card {
+  min-height:250px;
+  padding:28px 18px;
+  text-align:center;
+  border-radius:22px;
+  background:#f8fbff;
+  border:1px solid #dbe9f6;
+}
+.status-card:nth-child(odd) {
+  background:#fff7ea;
+  border-color:#ead2a8;
+}
+.status-card p {
+  color:var(--gold);
+  font-size:15px;
+  font-weight:900;
+  line-height:1.4;
+}
+.status-card strong {
+  display:block;
+  margin:22px 0 4px;
+  color:var(--navy);
+  font-size:54px;
+  line-height:1;
+  letter-spacing:-1.4px;
+}
+.status-card span {
+  display:block;
+  color:var(--navy-dark);
+  font-size:17px;
+  font-weight:900;
+}
+.status-card small {
+  display:block;
+  margin:24px auto 0;
+  padding-top:20px;
+  width:80%;
+  border-top:1px solid rgba(201,151,70,.28);
+  color:var(--muted);
+  font-size:14px;
+}
+.status-card.muted strong {
+  font-size:34px;
+  margin-top:31px;
+}
+.status-notice {
+  max-width:1030px;
+  margin:28px auto 0;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:18px 22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--peach);
+}
+.status-notice span {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  flex:0 0 auto;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  background:#fff;
+  color:var(--gold);
+  font-weight:900;
+}
+.status-notice p {
+  flex:1;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+}
+.status-notice b {
+  color:var(--navy);
+  margin-right:6px;
+}
+.status-notice .btn {
+  min-height:44px;
+  padding:0 20px;
+  font-size:15px;
+  border-radius:10px;
+}
+
 .home-grid { display:grid; grid-template-columns: 1.22fr .9fr; gap:34px; align-items:stretch; }
 .why-area { min-width:0; }
 .why-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
@@ -195,8 +336,9 @@ p { line-height:1.75; }
   }
   .info-item { border-right:0; border-bottom:1px solid rgba(206,166,103,.34); }
   .info-item:last-child { border-bottom:0; }
-  .home-grid, .process-fee-grid, .story-section-wide, .fee-layout { grid-template-columns:1fr; }
+  .home-grid, .process-fee-grid, .story-section-wide, .fee-layout, .status-panel { grid-template-columns:1fr; }
   .why-grid { grid-template-columns:repeat(2,1fr); }
+  .status-list { grid-template-columns:repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 760px) {
   .site-header { height:74px; padding:0 18px; }
@@ -215,7 +357,11 @@ p { line-height:1.75; }
   .info-panel { width:100%; left:auto; right:auto; bottom:auto; }
   .section { padding:64px 20px; }
   .section h2, .section-heading h2 { font-size:30px; }
-  .why-grid, .gallery-grid, .process-line { grid-template-columns:1fr; }
+  .why-grid, .gallery-grid, .process-line, .status-list { grid-template-columns:1fr; }
+  .status-panel { padding:20px; }
+  .status-summary, .status-card { min-height:auto; }
+  .status-notice { align-items:flex-start; flex-direction:column; }
+  .status-notice .btn { width:100%; }
   .story-card.compact { flex-direction:column; text-align:center; padding:30px 22px; }
   .sub-hero { padding:74px 20px 52px; }
   .sub-hero h1 { font-size:38px; }
