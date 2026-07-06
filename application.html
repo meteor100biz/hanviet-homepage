@@ -100,7 +100,11 @@
     @media (min-width: 900px) {
       .consent-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
+        align-items: stretch;
+      }
+
+      .consent-grid .consent-detail {
+        margin-top: 0;
       }
     }
   </style>
@@ -239,7 +243,7 @@
   <section id="applicationSuccessScreen" class="success-screen" aria-live="polite">
     <div class="success-screen-box">
       <h2>신청해 주셔서 감사합니다.</h2>
-      <p>소중한 인연을 찾는 첫걸음이 접수되었습니다. 내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
+      <p>소중한 인연을 찾는 첫걸음이 접수되었습니다.<br>내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
       <button class="btn btn-primary" type="button" data-go-home>확인</button>
     </div>
   </section>
@@ -248,7 +252,7 @@
 <dialog id="applicationSuccessDialog" class="success-dialog" aria-labelledby="successDialogTitle">
   <div class="success-dialog-box">
     <h2 id="successDialogTitle">신청해 주셔서 감사합니다.</h2>
-    <p>소중한 인연을 찾는 첫걸음이 접수되었습니다. 내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
+    <p>소중한 인연을 찾는 첫걸음이 접수되었습니다.<br>내용을 확인한 뒤 정성껏 연락드리겠습니다.</p>
     <button class="btn btn-primary" type="button" data-close-success>확인</button>
   </div>
 </dialog>
@@ -308,6 +312,8 @@
       });
       observer.observe(statusBox, { childList: true, characterData: true, subtree: true });
     }
+
+    window.addEventListener('application:success', showSuccessDialog);
 
     document.querySelectorAll('[data-close-success], [data-go-home]').forEach((button) => {
       button.addEventListener('click', goHome);

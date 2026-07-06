@@ -175,9 +175,24 @@ p { line-height:1.75; }
 @media (max-width: 1180px) {
   .main-nav { display:none; }
   .site-footer { grid-template-columns:repeat(2, minmax(0,1fr)); }
-  .hero { padding-bottom:210px; }
+  .hero {
+    min-height:auto;
+    display:block;
+    padding:64px 32px 48px;
+  }
+  .hero-copy {
+    width:min(560px, 100%);
+  }
   .license-badge { right:32px; }
-  .info-panel { grid-template-columns:1fr; width:calc(100% - 64px); left:32px; right:32px; }
+  .info-panel {
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    width:min(760px, 100%);
+    margin-top:28px;
+    grid-template-columns:1fr;
+  }
   .info-item { border-right:0; border-bottom:1px solid rgba(206,166,103,.34); }
   .info-item:last-child { border-bottom:0; }
   .home-grid, .process-fee-grid, .story-section-wide, .fee-layout { grid-template-columns:1fr; }
@@ -190,14 +205,14 @@ p { line-height:1.75; }
   .brand strong { font-size:22px; }
   .brand span { font-size:9px; letter-spacing:2px; }
   .header-cta { padding:11px 14px; font-size:14px; }
-  .hero { min-height:760px; padding:48px 20px 300px; background-position:64% center; }
+  .hero { min-height:auto; padding:48px 20px; background-position:64% center; }
   .hero-copy { width:100%; max-width:470px; }
   .hero h1 { letter-spacing:-2px; }
   .hero-kicker { font-size:20px; }
   .hero-slogan { font-size:23px; }
   .hero-actions .btn { width:100%; }
   .license-badge { display:none; }
-  .info-panel { width:calc(100% - 40px); left:20px; right:20px; bottom:22px; }
+  .info-panel { width:100%; left:auto; right:auto; bottom:auto; }
   .section { padding:64px 20px; }
   .section h2, .section-heading h2 { font-size:30px; }
   .why-grid, .gallery-grid, .process-line { grid-template-columns:1fr; }
@@ -238,6 +253,7 @@ p { line-height:1.75; }
 
 .consent-detail { margin-top:18px; padding:20px; border:1px solid #e3edf8; border-radius:16px; background:#f8fbff; }
 .consent-detail:first-of-type { margin-top:0; }
+.consent-grid .consent-detail { margin-top:0; }
 .consent-detail h3 { margin-bottom:14px; color:var(--navy-dark); font-size:19px; }
 .consent-detail dl { display:grid; gap:8px; margin-bottom:16px; }
 .consent-detail dt { color:var(--navy); font-weight:900; }

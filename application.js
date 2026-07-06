@@ -197,7 +197,8 @@
       await insertApplication(client, payload);
 
       form.reset();
-      setStatus('신청서가 정상 접수되었습니다. 확인 후 순서대로 연락드리겠습니다.', 'success');
+      setStatus('', '');
+      window.dispatchEvent(new CustomEvent('application:success'));
     } catch (error) {
       console.error('Application submit failed', error);
       setStatus(error.message || '제출 중 오류가 발생했습니다.', 'error');
