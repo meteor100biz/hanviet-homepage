@@ -1,20 +1,7 @@
 (function () {
-  var fallbackStatus = {
-    monthLabel: '2026년 7월 현재',
-    totalLabel: '125명 접수',
-    summaryNote: '월 통합 접수 현황입니다.',
-    notice: '상담 가능 여부는 한베커플과의 상담 가능 상태를 의미하며, 실제 혼인 진행 가능 여부는 상담 후 개별 확인합니다.',
-    weeks: [
-      { label: '7월 1주', count: '11', unit: '명 접수', status: '상담 가능' },
-      { label: '7월 2주', count: '14', unit: '명 접수', status: '상담 가능' },
-	  { label: '7월 1주', count: '11', unit: '명 접수', status: '상담 가능' },
-      { label: '7월 2주', count: '14', unit: '명 접수', status: '상담 가능' }
-    ]
-  };
-
   function setText(id, value) {
     var element = document.getElementById(id);
-    if (element && value) {
+    if (element && value !== undefined && value !== null) {
       element.textContent = value;
     }
   }
@@ -44,6 +31,10 @@
   }
 
   function renderStatus(data) {
+    if (!data) {
+      return;
+    }
+
     setText('statusMonth', data.monthLabel);
     setText('statusTotal', data.totalLabel);
     setText('statusSummaryNote', data.summaryNote);
@@ -77,6 +68,17 @@
     })
     .then(renderStatus)
     .catch(function () {
-      renderStatus(fallbackStatus);
+      setText('statusMonth', '접수 현황 확인 중');
+      setText('statusTotal', '-');
+      setText('statusSummaryNote', '자료 파일을 확인해 주세요.');
+
+      var notice = document.getElementById('statusNotice');
+      if (notice) {
+        notice.textContent = '';
+        var title = document.createElement('b');
+        title.textContent = '안내';
+        notice.appendChild(title);
+        notice.appendChild(document.createTextNode(' 접수 현황 파일을 불러오지 못했습니다. data/recent-status.json 경로를 확인해 주세요.'));
+      }
     });
 }());
