@@ -30,13 +30,30 @@
     return article;
   }
 
+  function getCountNumber(item) {
+    var rawCount = item && item.count !== undefined && item.count !== null ? String(item.count) : '0';
+    var count = parseInt(rawCount.replace(/,/g, ''), 10);
+    return Number.isNaN(count) ? 0 : count;
+  }
+
+  function getTotalLabel(data) {
+    if (Array.isArray(data.weeks) && data.weeks.length > 0) {
+      var total = data.weeks.reduce(function (sum, item) {
+        return sum + getCountNumber(item);
+      }, 0);
+      return total.toLocaleString('ko-KR') + '명 접수';
+    }
+
+    return data.totalLabel || '-';
+  }
+
   function renderStatus(data) {
     if (!data) {
       return;
     }
 
     setText('statusMonth', data.monthLabel);
-    setText('statusTotal', data.totalLabel);
+    setText('statusTotal', getTotalLabel(data));
     setText('statusSummaryNote', data.summaryNote);
 
     var notice = document.getElementById('statusNotice');
