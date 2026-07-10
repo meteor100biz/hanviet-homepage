@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fffaf3"/><stop offset="1" stop-color="#f7e6c8"/></linearGradient>
+    <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#e7ba63"/><stop offset="1" stop-color="#c58b33"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6b4d28" flood-opacity="0.16"/></filter>
+  </defs>
+  <rect width="1600" height="520" rx="46" fill="url(#bg)"/>
+  <text x="800" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="800" fill="#111f3f">한베커플 국제결혼 진행 절차</text>
+  <text x="800" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#6b5134">서로의 마음이 확인된 후, 안전하고 진정성 있는 만남으로 이어집니다.</text>
+  
+  <g transform="translate(70,185)" font-family="Arial, sans-serif">
+    <g filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">📝</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">매칭 신청</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">무료 신청서 작성</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">상담 및 동의</text></g>
+    <text x="216" y="114" font-size="36" fill="#d8a84d">›</text>
+    <g transform="translate(240,0)" filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">👤</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">프로필 작성</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">사진·소개</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">희망 조건 확인</text></g>
+    <text x="456" y="114" font-size="36" fill="#d8a84d">›</text>
+    <g transform="translate(480,0)" filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">🤝</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">상호 관심</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">서로의 프로필</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">확인 후 의사 확인</text></g>
+    <text x="696" y="114" font-size="36" fill="#d8a84d">›</text>
+    <g transform="translate(720,0)" filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">📄</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">여성 프로필</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">동의 받은</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">정보 제공</text></g>
+    <text x="936" y="114" font-size="36" fill="#d8a84d">›</text>
+    <g transform="translate(960,0)" filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">💬</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">영상통화</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">통역 지원</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">다자간 진행</text></g>
+    <text x="1176" y="114" font-size="36" fill="#d8a84d">›</text>
+    <g transform="translate(1200,0)" filter="url(#shadow)"><rect x="0" y="0" width="190" height="220" rx="28" fill="#fff" stroke="#f0d6a9"/><circle cx="95" cy="63" r="42" fill="#fbf1df"/><text x="95" y="75" text-anchor="middle" font-size="32">✈️</text><text x="95" y="128" text-anchor="middle" font-size="25" font-weight="800" fill="#332113">현지 만남</text><text x="95" y="164" text-anchor="middle" font-size="17" fill="#665544">베트남 방문</text><text x="95" y="194" text-anchor="middle" font-size="17" fill="#665544">직접 교제</text></g>
+  </g>
+  <g transform="translate(590,444)"><rect width="420" height="54" rx="27" fill="url(#gold)"/><text x="210" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#fff">상호 결혼 의사 확인 후 국제결혼 진행</text></g>
+</svg>

@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "image": "assets/images/gallery-ninhbinh.jpg",
+      "alt": "닌빈 배 투어",
+      "title": "닌빈의 풍경",
+      "description": "직접 다녀온 현지 풍경",
+      "link": ""
+    },
+    {
+      "image": "assets/images/gallery-hats.jpg",
+      "alt": "베트남 모자 가게",
+      "title": "베트남 문화",
+      "description": "논라와 현지 상점",
+      "link": ""
+    },
+    {
+      "image": "assets/images/gallery-vuyen-night.jpg",
+      "alt": "하이퐁 브이옌섬",
+      "title": "하이퐁의 밤",
+      "description": "현지 생활과 거리 분위기",
+      "link": ""
+    },
+    {
+      "image": "assets/images/gallery-beach.jpg",
+      "alt": "다낭 미케비치",
+      "title": "다낭 미케비치",
+      "description": "밝은 하늘과 해변",
+      "link": ""
+    },
+    {
+      "image": "assets/images/gallery-danang.jpg",
+      "alt": "다낭 시내",
+      "title": "다낭 시내",
+      "description": "도시와 생활 풍경",
+      "link": ""
+    },
+    {
+      "image": "assets/images/gallery-bana-gate.jpg",
+      "alt": "바나힐 입구",
+      "title": "베트남 여행지",
+      "description": "바나힐 현지 사진",
+      "link": ""
+    }
+  ]
+}
