@@ -229,6 +229,46 @@ p { line-height:1.75; }
 .svg-icon.navy { color:var(--navy); }
 .svg-icon.red { color:var(--red); background:#fff4f5; box-shadow: inset 0 0 0 1px #ffd7dc; }
 .svg-icon.gold { color:var(--gold); background:#fff8ed; box-shadow: inset 0 0 0 1px #f4ddb4; }
+.svg-icon.feature-license-icon svg {
+  width:44px;
+  height:44px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+}
+.svg-icon.feature-license-icon .feature-fill {
+  fill:currentColor;
+  stroke:none;
+}
+.svg-icon.feature-license-icon .feature-check {
+  fill:none;
+  stroke:#fff;
+  stroke-width:2.2;
+}
+.svg-icon.feature-fill-icon svg,
+.svg-icon.feature-cooperation-icon svg {
+  width:46px;
+  height:46px;
+  fill:currentColor;
+  stroke:none;
+}
+.svg-icon.feature-aftercare-icon svg {
+  width:46px;
+  height:46px;
+  fill:none;
+  stroke:currentColor;
+}
+.svg-icon.feature-aftercare-icon .feature-heart {
+  fill:currentColor;
+  stroke:none;
+}
+.svg-icon.feature-aftercare-icon .feature-hand-line {
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 .why-card h3 { font-size:21px; color:var(--navy-dark); margin-bottom:12px; }
 .why-card p { color:var(--muted); font-size:15px; }
 .story-card.compact { display:flex; gap:30px; align-items:center; background:linear-gradient(135deg,var(--navy),#073a86); color:#fff; border-radius:24px; padding:34px 38px; box-shadow:0 24px 70px rgba(8,39,92,.22); }
