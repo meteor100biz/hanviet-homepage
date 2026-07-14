@@ -1,10 +1,17 @@
 {
   "featured": [
+    "vietnam-stories/motorbike/",
     "vietnam-stories/gosu/",
-    "닌빈의 풍경",
-    "베트남 문화"
+    "닌빈의 풍경"
   ],
   "items": [
+    {
+      "image": "assets/images/gallery-ninhbinh.jpg",
+      "alt": "베트남 이야기 #2 -오토바이",
+      "title": "베트남 이야기 #2 -오토바이",
+      "description": "",
+      "link": "vietnam-stories/motorbike/"
+    },
     {
       "image": "vietnam-stories/gosu/images/main.png",
       "alt": "베트남 쌀국수",
