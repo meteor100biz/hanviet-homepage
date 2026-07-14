@@ -1,10 +1,31 @@
 {
   "featured": [
-    "vietnam-stories/motorbike/",
-    "vietnam-stories/gosu/",
-    "닌빈의 풍경"
+    "vietnam-stories/kanja/",
+    "vietnam-stories/market_food/",
+    "vietnam-stories/market_260715/"
   ],
   "items": [
+    {
+      "image": "vietnam-stories/kanja/images/main.png",
+      "alt": "쌍희 희 囍",
+      "title": "베트남에서 만난 익숙한 한자 囍",
+      "description": "",
+      "link": "vietnam-stories/kanja/"
+    },
+    {
+      "image": "vietnam-stories/market_food/images/main.jpg",
+      "alt": "코코넛 채가 올려진 염소고기 구이",
+      "title": "베트남 시장에서 맛본 음식 이야기｜현지 먹거리",
+      "description": "베트남 현지 먹거리 이야기",
+      "link": "vietnam-stories/market_food/"
+    },
+    {
+      "image": "vietnam-stories/market_260715/images/main.jpg",
+      "alt": "시장에서 장을보는 오토바이",
+      "title": "베트남 새벽시장과 저녁시장 이야기｜오토바이를 타고 만난 현지의 일상",
+      "description": "",
+      "link": "vietnam-stories/market_260715/"
+    },
     {
       "image": "vietnam-stories/motorbike/images/main.jpg",
       "alt": "베트남 이야기 #2 -오토바이",
