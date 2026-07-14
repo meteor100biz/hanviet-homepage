@@ -42,8 +42,17 @@
       return;
     }
 
+    var featured = Array.isArray(data.featured) ? data.featured : [];
+    var items = featured.length
+      ? featured.map(function (key) {
+        return data.items.find(function (item) {
+          return item.link === key || item.title === key || item.image === key;
+        });
+      }).filter(Boolean)
+      : data.items;
+
     grid.innerHTML = '';
-    data.items.slice(0, 6).forEach(function (item) {
+    items.slice(0, 3).forEach(function (item) {
       grid.appendChild(createStoryCard(item));
     });
   }

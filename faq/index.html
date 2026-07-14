@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자주 묻는 질문 | 한베커플</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .list-page{max-width:920px;margin:0 auto;padding:72px 24px 96px}
+    @media(max-width:760px){.site-header{position:relative}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><img src="../assets/images/logo.png" alt="한베커플 로고"><div><strong>한베커플</strong><span>HAN-VIET COUPLE</span></div></a>
+  <nav class="main-nav"><a href="../index.html#about">한베커플 소개</a><a href="../process.html">국제결혼 절차</a><a href="../fee.html">비용 안내</a><a href="../vietnam-stories/">베트남 이야기</a><a href="../notice/">공지사항</a><a href="../faq/">FAQ</a></nav>
+  <a class="header-cta" href="../application.html">상담 신청하기</a>
+</header>
+<main class="list-page">
+  <div class="section-heading">
+    <p class="eyebrow">FAQ</p>
+    <h1>자주 묻는 질문</h1>
+    <p>상담 전에 자주 문의하시는 내용을 정리했습니다.</p>
+  </div>
+  <div id="faqList" class="faq-list"></div>
+  <p style="text-align:center;margin-top:34px"><a class="text-link" href="../index.html">메인으로 돌아가기 →</a></p>
+</main>
+<script>
+  fetch('../data/faq-posts.json', { cache: 'no-store' })
+    .then(function(response){ return response.json(); })
+    .then(function(data){
+      var list = document.getElementById('faqList');
+      var items = Array.isArray(data.items) ? data.items : [];
+      if (!items.length) {
+        list.innerHTML = '<p>등록된 질문이 없습니다.</p>';
+        return;
+      }
+      list.innerHTML = items.map(function(item, index){
+        return '<details ' + (index === 0 ? 'open' : '') + '><summary>' + (item.question || '질문 없음') + '</summary><p>' + (item.answer || '') + '</p></details>';
+      }).join('');
+    });
+</script>
+</body>
+</html>

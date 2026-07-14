@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지사항 | 한베커플</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .list-page{max-width:1040px;margin:0 auto;padding:72px 24px 96px}
+    .notice-list{display:grid;gap:12px;margin-top:34px}
+    .notice-item{display:grid;grid-template-columns:1fr auto;gap:18px;padding:22px 24px;border:1px solid rgba(213,188,151,.42);border-radius:8px;background:#fff;box-shadow:0 14px 36px rgba(72,48,18,.06)}
+    .notice-item h2{font-size:21px;margin-bottom:6px}
+    .notice-item p{color:#6e6670;font-size:15px}
+    .notice-item time{color:#8d642d;font-weight:900;white-space:nowrap}
+    @media(max-width:760px){.notice-item{grid-template-columns:1fr}.site-header{position:relative}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html"><img src="../assets/images/logo.png" alt="한베커플 로고"><div><strong>한베커플</strong><span>HAN-VIET COUPLE</span></div></a>
+  <nav class="main-nav"><a href="../index.html#about">한베커플 소개</a><a href="../process.html">국제결혼 절차</a><a href="../fee.html">비용 안내</a><a href="../vietnam-stories/">베트남 이야기</a><a href="../notice/">공지사항</a><a href="../faq/">FAQ</a></nav>
+  <a class="header-cta" href="../application.html">상담 신청하기</a>
+</header>
+<main class="list-page">
+  <div class="section-heading">
+    <p class="eyebrow">NOTICE</p>
+    <h1>공지사항</h1>
+    <p>한베커플의 주요 안내와 운영 공지를 확인하실 수 있습니다.</p>
+  </div>
+  <div id="noticeList" class="notice-list"></div>
+  <p style="text-align:center;margin-top:34px"><a class="text-link" href="../index.html">메인으로 돌아가기 →</a></p>
+</main>
+<script>
+  fetch('../data/notice-posts.json', { cache: 'no-store' })
+    .then(function(response){ return response.json(); })
+    .then(function(data){
+      var list = document.getElementById('noticeList');
+      var items = Array.isArray(data.items) ? data.items : [];
+      if (!items.length) {
+        list.innerHTML = '<p>등록된 공지사항이 없습니다.</p>';
+        return;
+      }
+      list.innerHTML = items.map(function(item){
+        var href = item.link || '#';
+        return '<article class="notice-item"><div><h2><a href="' + href + '">' + (item.title || '제목 없음') + '</a></h2><p>' + (item.description || '') + '</p></div><time>' + (item.date || '') + '</time></article>';
+      }).join('');
+    });
+</script>
+</body>
+</html>
