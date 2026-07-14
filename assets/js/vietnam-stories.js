@@ -52,7 +52,7 @@
       : data.items;
 
     grid.innerHTML = '';
-    items.slice(0, 3).forEach(function (item) {
+    items.slice(0, 6).forEach(function (item) {
       grid.appendChild(createStoryCard(item));
     });
   }

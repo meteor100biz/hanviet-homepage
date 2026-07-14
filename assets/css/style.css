@@ -454,6 +454,36 @@ p { line-height:1.75; }
   gap:24px;
   align-items:stretch;
 }
+.board-summary-layout {
+  grid-template-columns:1fr 1fr;
+}
+.vietnam-home-section {
+  background:linear-gradient(180deg,#fff,#fffaf2);
+}
+.home-story-grid {
+  max-width:1240px;
+  margin:0 auto;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:22px;
+}
+.home-story-grid article {
+  padding:14px;
+  border:1px solid rgba(213,188,151,.42);
+  border-radius:8px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 18px 52px rgba(72,48,18,.07);
+}
+.home-story-grid .gallery-link {
+  height:100%;
+}
+.home-story-grid img,
+.home-story-grid .empty-thumb {
+  aspect-ratio:12 / 7;
+}
+.section-more {
+  margin-top:28px;
+  text-align:center;
+}
 .board-card {
   min-width:0;
   padding:24px;
@@ -653,6 +683,7 @@ p { line-height:1.75; }
   .info-item { border-right:0; border-bottom:1px solid rgba(206,166,103,.34); }
   .info-item:last-child { border-bottom:0; }
   .home-grid, .process-fee-grid, .story-section-wide, .fee-layout, .status-panel, .board-layout { grid-template-columns:1fr; }
+  .home-story-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
   .why-grid { grid-template-columns:repeat(2,1fr); }
   .process-steps { grid-template-columns:repeat(4, minmax(0, 1fr)); }
   .process-steps article:not(:last-child)::after { display:none; }
@@ -677,6 +708,10 @@ p { line-height:1.75; }
   .section { padding:64px 20px; }
   .section h2, .section-heading h2 { font-size:30px; }
   .why-grid, .gallery-grid, .process-line, .status-list, .process-steps, .story-board-list { grid-template-columns:1fr; }
+  .home-story-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
+  .home-story-grid article { padding:10px; }
+  .home-story-grid h3 { font-size:14px; }
+  .home-story-grid p { display:none; }
   .board-card { padding:20px; }
   .status-panel { padding:20px; }
   .status-summary, .status-card { min-height:auto; }
