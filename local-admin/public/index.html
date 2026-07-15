@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한베커플 로컬 관리자</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <strong>한베커플</strong>
+      <span>LOCAL ADMIN</span>
+    </div>
+    <button class="nav-button" type="button" data-view="home">홈페이지 관리</button>
+    <button class="nav-button" type="button" data-view="vietnam">베트남 이야기</button>
+    <button class="nav-button is-active" type="button" data-view="applications">신청서 관리</button>
+    <p class="side-note">저장한 홈페이지 데이터 파일은 GitHub에 올리면 Vercel 배포 후 반영됩니다.</p>
+  </aside>
+
+  <main class="workspace">
+    <section class="topbar">
+      <div>
+        <p class="eyebrow">LOCAL ONLY</p>
+        <h1>한베커플 로컬 관리자</h1>
+      </div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="homeView" class="view">
+      <div class="section-title">
+        <div>
+          <h2>홈페이지 관리</h2>
+          <p>최근 접수 현황과 베트남 이야기 6칸을 수정합니다.</p>
+        </div>
+        <button class="primary-button" type="button" id="saveHomeButton">홈페이지 데이터 저장</button>
+      </div>
+
+      <div class="panel">
+        <h3>최근 베트남 여성회원 접수 현황</h3>
+        <div class="form-grid three">
+          <label>상단 표시 문구<input id="monthLabel" type="text" /></label>
+          <label>요약 문구<input id="summaryNote" type="text" /></label>
+          <label>안내 문구<input id="notice" type="text" /></label>
+        </div>
+        <div class="table-actions">
+          <button type="button" id="addWeekButton">새 주차 입력</button>
+          <strong id="recentTotalPreview" class="recent-total-preview" aria-live="polite"></strong>
+        </div>
+        <div id="weeksEditor" class="editor-list"></div>
+      </div>
+
+      <div class="panel">
+        <h3>베트남 이야기</h3>
+        <p class="help-text">최근 작성한 글 6개 중 메인 화면에 노출할 글을 선택합니다. 메인에는 최대 6개까지 표시됩니다.</p>
+        <div id="storiesExposureEditor" class="story-exposure-editor"></div>
+      </div>
+    </section>
+
+    <section id="vietnamView" class="view">
+      <div class="section-title">
+        <div>
+          <h2>베트남 이야기</h2>
+          <p>기존 글을 불러와 수정하거나, 새 글을 작성해 사이트용 HTML 문서를 생성합니다.</p>
+        </div>
+        <div class="button-row">
+          <button type="button" id="newVietnamStoryButton">새 글 작성</button>
+          <button class="danger" type="button" id="deleteVietnamStoryButton" disabled>글 삭제</button>
+          <button class="primary-button" type="button" id="createVietnamStoryButton">저장</button>
+        </div>
+      </div>
+
+      <div class="applications-layout vietnam-admin-layout">
+        <div class="panel list-panel">
+          <div class="list-header">
+            <h3>기존 글 목록</h3>
+            <input id="vietnamStorySearch" type="search" placeholder="제목, 분류 검색" />
+          </div>
+          <div id="vietnamStoryList" class="application-list"></div>
+        </div>
+
+      <div class="panel vietnam-editor-panel">
+        <h3>새 이야기 작성</h3>
+        <input id="vietnamOriginalSlug" type="hidden" />
+        <div class="story-compose-layout">
+          <div class="block-toolbar">
+            <strong>블록 추가</strong>
+            <button type="button" id="addStoryHeadingButton">소제목 추가</button>
+            <button type="button" id="addStoryParagraphButton">문단 추가</button>
+            <button class="image-add-button" type="button" id="addStoryImageButton">사진 추가</button>
+            <button class="preview-button" type="button" id="previewVietnamStoryButton">미리 보기</button>
+          </div>
+          <div class="story-compose-body">
+            <div class="form-grid two">
+              <label>제목<input id="vietnamTitle" type="text" placeholder="예: 하노이 전통시장 탐방기" /></label>
+              <label>폴더명<input id="vietnamSlug" type="text" placeholder="비워두면 제목으로 자동 생성" /></label>
+              <label>분류<input id="vietnamCategory" type="text" placeholder="예: 문화, 음식, 여행" /></label>
+              <label>날짜<input id="vietnamDate" type="date" /></label>
+            </div>
+            <div class="form-grid two">
+              <label>대표 사진<input id="vietnamImage" type="file" accept="image/*" /></label>
+              <label>대표 사진 설명<input id="vietnamImageAlt" type="text" placeholder="이미지 대체 문구" /></label>
+            </div>
+            <div id="currentHeroImageBox" class="current-image-box">
+              <p class="help-text">기존 글을 불러오면 현재 대표 사진이 여기에 표시됩니다. 새 사진을 선택하지 않으면 기존 대표 사진이 유지됩니다.</p>
+            </div>
+            <label>요약 문구<input id="vietnamSummary" type="text" placeholder="메인 화면 카드에 표시할 짧은 설명" /></label>
+            <details class="seo-panel">
+              <summary>검색 노출 설정 <span>필요할 때만 열어서 수정</span></summary>
+              <label>SEO 제목<input id="vietnamSeoTitle" type="text" placeholder="비워두면 제목 + 한베커플 문구로 자동 생성" /></label>
+              <label>검색 설명<textarea id="vietnamSeoDescription" placeholder="비워두면 요약 문구를 바탕으로 자동 생성됩니다."></textarea></label>
+              <input id="vietnamSeoKeywords" type="hidden" />
+              <input id="vietnamRelatedLinks" type="hidden" value="국제결혼 절차, 비용 안내, 매칭 신청" />
+              <p class="help-text">검색 키워드와 관련 링크는 자동으로 처리합니다. 검색 노출에는 제목, 요약, 본문 첫 문단이 더 중요합니다.</p>
+            </details>
+            <div id="storyBlocksEditor" class="story-blocks-editor"></div>
+            <label class="check-row"><input id="vietnamPublishMain" type="checkbox" checked /> 메인 화면 베트남 이야기 3개 목록에 추가</label>
+            <p class="help-text">생성 위치: 사이트 폴더의 `vietnam-stories/폴더명/index.html` 및 `images/` 하위 폴더</p>
+            <div id="vietnamCreateResult" class="config-status"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="applicationsView" class="view is-visible">
+      <div class="section-title">
+        <div>
+          <h2>신청서 관리</h2>
+          <p>Supabase 또는 CSV 파일에서 신청서를 불러와 양식에 맞춰 확인합니다.</p>
+        </div>
+        <div class="button-row">
+          <button type="button" id="downloadSupabaseButton">Supabase에서 다운로드</button>
+          <button class="primary-button" type="button" id="reloadApplicationsButton">CSV 다시 읽기</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>CSV 가져오기</h3>
+        <p class="help-text">Supabase에서 직접 받은 `applications_rows.csv`를 선택하면 `local-admin/data/applications_rows.csv`에 저장됩니다.</p>
+        <input id="csvFileInput" type="file" accept=".csv,text/csv" />
+        <div id="configStatus" class="config-status"></div>
+      </div>
+
+      <div class="applications-layout">
+        <div class="panel list-panel">
+          <div class="list-header">
+            <h3>신청자 목록</h3>
+            <input id="applicationSearch" type="search" placeholder="성명, 연락처, 지역 검색" />
+          </div>
+          <div id="applicationList" class="application-list"></div>
+        </div>
+
+        <div class="panel detail-panel">
+          <h3>신청서 상세</h3>
+          <div id="applicationDetail" class="application-detail empty">신청자를 선택하세요.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "hanviet-local-admin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local-only admin for Han-Viet Couple homepage and applications.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
