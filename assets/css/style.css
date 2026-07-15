@@ -741,6 +741,7 @@ p { line-height:1.75; }
   .status-list { grid-template-columns:repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 760px) {
+  body { font-size:17px; }
   .site-header { height:74px; padding:0 14px; gap:8px; }
   .brand { min-width:auto; }
   .brand img { width:44px; height:44px; }
@@ -754,23 +755,44 @@ p { line-height:1.75; }
   .hero::before { opacity:.22; background-position:68% center; }
   .hero-copy { width:100%; max-width:470px; }
   .hero h1 { letter-spacing:-2px; }
-  .hero-kicker { font-size:20px; }
+  .hero-kicker { font-size:23px; }
   .hero-slogan-image { width:min(360px, 100%); margin-bottom:20px; }
   .hero-actions .btn { width:100%; }
   .license-badge { display:none; }
   .info-panel { width:100%; left:auto; right:auto; bottom:auto; }
+  .info-item { padding:22px 24px; gap:18px; }
+  .info-item b { font-size:20px; }
+  .info-item p { font-size:16px; }
   .section { padding:64px 20px; }
-  .section h2, .section-heading h2 { font-size:30px; }
+  .section h2, .section-heading h2 { font-size:34px; line-height:1.22; }
+  .section-heading { margin-bottom:34px; }
+  .section-heading p:not(.eyebrow) { font-size:17px; line-height:1.75; }
+  .eyebrow { font-size:14px; letter-spacing:2px; }
   .why-grid, .gallery-grid, .process-line, .status-list, .process-steps, .story-board-list { grid-template-columns:1fr; }
+  .why-card { min-height:230px; padding:32px 18px; }
+  .why-card h3 { font-size:21px; }
+  .why-card p { font-size:16px; line-height:1.75; }
   .home-story-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
   .home-story-grid article { padding:10px; }
-  .home-story-grid h3 { font-size:14px; }
+  .home-story-grid h3 { font-size:16px; line-height:1.35; }
   .home-story-grid p { display:none; }
   .board-card { padding:20px; }
   .status-panel { padding:20px; }
   .status-summary, .status-card { min-height:auto; }
+  .status-summary p { font-size:16px; }
+  .status-summary strong { font-size:48px; }
+  .status-summary span:not(.status-medal) { font-size:16px; }
+  .status-card p { font-size:17px; }
+  .status-card strong { font-size:58px; }
+  .status-card span { font-size:19px; }
+  .status-card small { font-size:16px; }
   .status-notice { align-items:flex-start; flex-direction:column; }
+  .status-notice p { font-size:16px; }
   .status-notice .btn { width:100%; }
+  .process-steps article { padding:18px 8px; }
+  .process-steps span { font-size:14px; }
+  .process-steps h3 { font-size:19px; }
+  .process-steps p { font-size:15px; line-height:1.6; }
   .story-card.compact { flex-direction:column; text-align:center; padding:30px 22px; }
   .story-card.ceo-greeting {
     display:grid;
@@ -790,8 +812,13 @@ p { line-height:1.75; }
   }
   .sub-hero { padding:74px 20px 52px; }
   .sub-hero h1 { font-size:38px; }
+  .sub-hero p:not(.eyebrow) { font-size:17px; }
   .timeline article { grid-template-columns:1fr; }
+  .timeline h3 { font-size:25px; }
+  .timeline p { font-size:17px; }
   .site-footer { grid-template-columns:1fr; padding:38px 22px; }
+  .site-footer p,
+  .site-footer a { font-size:16px; }
 }
 
 /* Application form */
