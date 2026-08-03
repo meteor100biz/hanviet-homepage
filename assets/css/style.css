@@ -36,9 +36,9 @@ img { display: block; max-width: 100%; }
 .main-nav a:hover::after { width:100%; }
 .header-cta { background:var(--navy); color:#fff; padding:14px 22px; border-radius:10px; font-weight:900; box-shadow:0 12px 28px rgba(8,39,92,.22); }
 .application-header-submit {
-  border:1px solid rgba(100,38,126,.18);
-  background:linear-gradient(135deg, #78319b, #a845a6);
-  box-shadow:0 12px 28px rgba(120,49,155,.25);
+  border:0;
+  background:var(--navy);
+  box-shadow:0 14px 30px rgba(8,39,92,.22);
   color:#fff;
   cursor:pointer;
   font:inherit;
@@ -48,8 +48,8 @@ img { display: block; max-width: 100%; }
 }
 .application-header-submit:hover {
   transform:translateY(-2px);
-  box-shadow:0 16px 32px rgba(120,49,155,.32);
-  filter:saturate(1.08);
+  box-shadow:0 16px 32px rgba(8,39,92,.28);
+  filter:brightness(1.06);
 }
 .small-badge { display:inline-flex; margin-right:4px; color:#f9d08a; }
 .mobile-menu {
@@ -109,7 +109,7 @@ img { display: block; max-width: 100%; }
   padding:13px 12px;
   border:0;
   border-radius:10px;
-  background:linear-gradient(135deg, #78319b, #a845a6);
+  background:var(--navy);
   color:#fff;
   cursor:pointer;
   font:inherit;
