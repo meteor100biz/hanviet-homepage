@@ -4,6 +4,12 @@
 
   const statusBox = document.getElementById('applicationStatus');
   const submitButton = form.querySelector('button[type="submit"]');
+  document.querySelectorAll('[data-application-submit]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const mobileMenu = button.closest('details');
+      if (mobileMenu) mobileMenu.open = false;
+    });
+  });
   const SUPABASE_URL = window.HANVIET_SUPABASE_URL;
   const SUPABASE_KEY = window.HANVIET_SUPABASE_KEY;
   const BUCKET = 'member-photo';
