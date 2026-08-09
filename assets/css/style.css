@@ -698,6 +698,8 @@ p { line-height:1.75; }
 .sub-hero h1 { font-size:54px; color:var(--navy-dark); letter-spacing:-2px; margin:10px 0 12px; }
 .sub-hero p:not(.eyebrow) { color:var(--muted); }
 .process-page, .fee-page { background:#fff; }
+.sub-hero.fee-sub, .sub-hero.process-sub { padding:58px 56px 42px; }
+.fee-page, .process-page { padding-top:42px; }
 .timeline { max-width:980px; margin:0 auto 48px; display:grid; gap:16px; }
 .timeline article { display:grid; grid-template-columns:76px 1fr; gap:22px; background:#fff; border:1px solid #dbe9f6; border-radius:20px; padding:28px; box-shadow:0 12px 38px rgba(31,47,82,.05); }
 .timeline b { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--blue); color:#fff; }
@@ -865,6 +867,8 @@ p { line-height:1.75; }
   .sub-hero { padding:74px 20px 52px; }
   .sub-hero h1 { font-size:38px; }
   .sub-hero p:not(.eyebrow) { font-size:17px; }
+  .sub-hero.fee-sub, .sub-hero.process-sub { padding:48px 20px 34px; }
+  .fee-page, .process-page { padding-top:36px; }
   .timeline article { grid-template-columns:1fr; }
   .timeline h3 { font-size:25px; }
   .timeline p { font-size:17px; }
