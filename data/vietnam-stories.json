@@ -1,5 +1,6 @@
 {
   "featured": [
+    "vietnam-stories/meeting_001/",
     "vietnam-stories/kanja/",
     "vietnam-stories/market_food/",
     "vietnam-stories/market_260715/",
@@ -7,6 +8,13 @@
     "vietnam-stories/gosu/"
   ],
   "items": [
+    {
+      "image": "vietnam-stories/meeting_001/images/main.png",
+      "alt": "첫인상은 빠르지만, 결혼은 천천히 알아가는 과정입니다",
+      "title": "첫인상은 빠르지만, 결혼은 천천히 알아가는 과정입니다",
+      "description": "국제결혼 맞선에서 첫인상보다 중요한 것",
+      "link": "vietnam-stories/meeting_001/"
+    },
     {
       "image": "vietnam-stories/kanja/images/main.png",
       "alt": "쌍희 희 囍",
