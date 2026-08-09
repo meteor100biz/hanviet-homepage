@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     .list-page{max-width:920px;margin:0 auto;padding:72px 24px 96px}
+    .faq-detail-link{display:inline-flex;margin-top:12px;color:#06265c;font-weight:900}
     @media(max-width:760px){.site-header{position:relative}}
   </style>
 </head>
@@ -48,6 +49,9 @@
   <p style="text-align:center;margin-top:34px"><a class="text-link" href="../index.html">메인으로 돌아가기 →</a></p>
 </main>
 <script>
+  function escapeHtml(value) {
+    return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
   fetch('../data/faq-posts.json', { cache: 'no-store' })
     .then(function(response){ return response.json(); })
     .then(function(data){
@@ -58,7 +62,8 @@
         return;
       }
       list.innerHTML = items.map(function(item, index){
-        return '<details ' + (index === 0 ? 'open' : '') + '><summary>' + (item.question || '질문 없음') + '</summary><p>' + (item.answer || '') + '</p></details>';
+        var detailLink = item.link ? '<a class="faq-detail-link" href="' + encodeURI(item.link) + '">상세 답변 보기 →</a>' : '';
+        return '<details ' + (index === 0 ? 'open' : '') + '><summary>' + escapeHtml(item.question || '질문 없음') + '</summary><p>' + escapeHtml(item.answer || '') + '</p>' + detailLink + '</details>';
       }).join('');
     });
 </script>
