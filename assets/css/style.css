@@ -1130,3 +1130,88 @@ p { line-height:1.75; }
   .timeline article:nth-child(even) b { left:-62px; right:auto; top:11px; }
 }
 
+/* Mobile homepage hero: dedicated wedding-couple visual */
+@media (max-width: 760px) {
+  .hero {
+    min-height:690px;
+    padding:0;
+    background:#f8f1e8;
+  }
+  .hero::before {
+    inset:0;
+    left:0;
+    width:100%;
+    transform:none;
+    opacity:1;
+    background-image:url('../images/hero-main-mobile.png');
+    background-size:cover;
+    background-position:center center;
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .hero::after {
+    inset:0;
+    left:0;
+    width:100%;
+    transform:none;
+    background:linear-gradient(180deg,
+      rgba(255,250,245,.97) 0%,
+      rgba(255,248,242,.91) 31%,
+      rgba(255,248,242,.48) 47%,
+      rgba(255,255,255,0) 64%);
+  }
+  .hero-inner {
+    width:100%;
+    min-height:690px;
+    padding:48px 20px 28px;
+  }
+  .hero-copy {
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    max-width:none;
+    min-height:614px;
+  }
+  .hero-kicker {
+    max-width:310px;
+    margin-bottom:14px;
+    gap:12px;
+    font-size:16px;
+    line-height:1.55;
+  }
+  .hero-kicker::after { width:54px; }
+  .hero h1 {
+    max-width:390px;
+    margin-bottom:18px;
+    font-size:36px;
+    line-height:1.16;
+    letter-spacing:-2.2px;
+  }
+  .hero-description {
+    max-width:390px;
+    margin-bottom:0;
+    color:#465266;
+    font-size:15px;
+    line-height:1.75;
+  }
+  .hero-description br { display:none; }
+  .hero-actions {
+    display:grid;
+    gap:10px;
+    margin-top:auto;
+  }
+  .hero-actions .btn {
+    width:100%;
+    min-height:56px;
+    border-radius:12px;
+    font-size:17px;
+  }
+  .hero-actions .btn-primary {
+    background:#8d1538;
+    box-shadow:0 12px 28px rgba(94,14,45,.22);
+  }
+  .hero-actions .btn-outline { background:rgba(255,255,255,.94); }
+  .license-badge,
+  .info-panel { display:none; }
+}
+
