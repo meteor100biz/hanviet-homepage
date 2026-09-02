@@ -85,17 +85,7 @@
     })
     .then(renderStatus)
     .catch(function () {
-      setText('statusMonth', '접수 현황 확인 중');
-      setText('statusTotal', '-');
-      setText('statusSummaryNote', '자료 파일을 확인해 주세요.');
-
-      var notice = document.getElementById('statusNotice');
-      if (notice) {
-        notice.textContent = '';
-        var title = document.createElement('b');
-        title.textContent = '안내';
-        notice.appendChild(title);
-        notice.appendChild(document.createTextNode(' 접수 현황 파일을 불러오지 못했습니다. data/recent-status.json 경로를 확인해 주세요.'));
-      }
+      /* 로컬 file:// 환경에서는 JSON 요청이 차단될 수 있으므로
+         index.html에 저장된 현재 수동 입력값을 그대로 표시합니다. */
     });
 }());
