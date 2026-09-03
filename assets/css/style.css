@@ -122,7 +122,7 @@ img { display: block; max-width: 100%; }
 
 /* Hero */
 .hero { min-height:670px; position:relative; display:flex; align-items:center; padding:74px 56px 112px; overflow:hidden; background-image: linear-gradient(180deg, rgba(255,248,246,.48), rgba(255,244,240,.58)), url('../images/hero-background.jpg'); background-size:cover; background-position:center top; }
-.hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,.05) 45%, rgba(255,255,255,0) 100%), url('../images/hero-main.jpg'); background-size:cover; background-position:right center; opacity:.98; pointer-events:none; -webkit-mask-image:linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,.34) 43%, #000 58%, #000 100%); mask-image:linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,.34) 43%, #000 58%, #000 100%); }
+.hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,.05) 45%, rgba(255,255,255,0) 100%), url('../images/hero-main-desktop-v13.jpg'); background-size:cover; background-position:right center; opacity:.98; pointer-events:none; -webkit-mask-image:linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,.34) 43%, #000 58%, #000 100%); mask-image:linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,.34) 43%, #000 58%, #000 100%); }
 .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(255,251,249,.99) 0%, rgba(255,248,246,.96) 25%, rgba(255,241,239,.76) 38%, rgba(255,235,232,.25) 53%, rgba(255,255,255,0) 68%), linear-gradient(180deg, rgba(255,250,242,0) 76%, var(--ivory) 100%); pointer-events:none; }
 .hero-copy { position:relative; z-index:3; width:min(560px, 48vw); }
 .hero-kicker { display:flex; align-items:center; gap:18px; font-size:26px; margin-bottom:18px; color:#121c35; }
@@ -1145,7 +1145,7 @@ p { line-height:1.75; }
     opacity:1;
     background-image:url('../images/hero-main-mobile.png');
     background-size:cover;
-    background-position:center 93%;
+    background-position:center 72%;
     -webkit-mask-image:none;
     mask-image:none;
   }
