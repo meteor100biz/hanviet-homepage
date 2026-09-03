@@ -1133,7 +1133,7 @@ p { line-height:1.75; }
 /* Mobile homepage hero: dedicated wedding-couple visual */
 @media (max-width: 760px) {
   .hero {
-    min-height:690px;
+    min-height:610px;
     padding:0;
     background:#f8f1e8;
   }
@@ -1145,7 +1145,7 @@ p { line-height:1.75; }
     opacity:1;
     background-image:url('../images/hero-main-mobile.png');
     background-size:cover;
-    background-position:center center;
+    background-position:center 93%;
     -webkit-mask-image:none;
     mask-image:none;
   }
@@ -1162,15 +1162,15 @@ p { line-height:1.75; }
   }
   .hero-inner {
     width:100%;
-    min-height:690px;
-    padding:48px 20px 28px;
+    min-height:610px;
+    padding:40px 20px 18px;
   }
   .hero-copy {
     display:flex;
     flex-direction:column;
     width:100%;
     max-width:none;
-    min-height:614px;
+    min-height:552px;
   }
   .hero-kicker {
     max-width:310px;
@@ -1194,7 +1194,7 @@ p { line-height:1.75; }
     font-size:15px;
     line-height:1.75;
   }
-  .hero-description br { display:none; }
+  .hero-description br { display:block; }
   .hero-actions {
     display:grid;
     gap:10px;
