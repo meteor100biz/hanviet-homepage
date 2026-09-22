@@ -971,7 +971,7 @@ p { line-height:1.75; }
   justify-content:space-between;
   gap:28px;
 }
-.site-header { padding:0; background:#fff; }
+.site-header { background:#fff; }
 .brand-wordmark {
   position:relative;
   display:block;
