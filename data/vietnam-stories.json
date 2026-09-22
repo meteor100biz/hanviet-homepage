@@ -1,13 +1,20 @@
 {
   "featured": [
+    "vietnam-stories/viet_highschool0101/",
     "vietnam-stories/meeting_001/",
     "vietnam-stories/kanja/",
     "vietnam-stories/market_food/",
     "vietnam-stories/market_260715/",
-    "vietnam-stories/motorbike/",
-    "vietnam-stories/gosu/"
+    "vietnam-stories/motorbike/"
   ],
   "items": [
+    {
+      "image": "vietnam-stories/viet_highschool0101/images/main.jpg",
+      "alt": "한국과 베트남의 결혼 가능 나이, 그리고 베트남의 졸업 이야기",
+      "title": "한국과 베트남의 결혼 가능 나이, 그리고 베트남의 졸업 이야기",
+      "description": "한국과 베트남의 결혼 가능 나이, 그리고 조금 다른 고등학교 졸업 풍경",
+      "link": "vietnam-stories/viet_highschool0101/"
+    },
     {
       "image": "vietnam-stories/meeting_001/images/main.png",
       "alt": "첫인상은 빠르지만, 결혼은 천천히 알아가는 과정입니다",
