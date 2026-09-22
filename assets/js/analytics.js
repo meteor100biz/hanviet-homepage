@@ -1,6 +1,12 @@
 /* Anonymous, first-party 한베커플 analytics. No form contents or full referrer URLs. */
 (() => {
-  if (window.__hanvietAnalytics || !['hanviet.co.kr', 'www.hanviet.co.kr'].includes(location.hostname) || navigator.doNotTrack === '1') return;
+  if (!['hanviet.co.kr', 'www.hanviet.co.kr'].includes(location.hostname)) return;
+  // Apply exclusion before creating a session or sending this page's first event.
+  if (new URLSearchParams(location.search).get('tracking') === 'off') {
+    try { localStorage.setItem('hanviet-analytics-opt-out', '1'); } catch {}
+    return;
+  }
+  if (window.__hanvietAnalytics || navigator.doNotTrack === '1') return;
   window.__hanvietAnalytics = true;
   const uuid = () => crypto.randomUUID();
   let session;
@@ -18,6 +24,8 @@
   const touch = () => { session.time = Date.now(); try { localStorage.setItem('hanviet-analytics-session', JSON.stringify(session)); } catch {} };
   touch();
   const send = (event) => {
+    // Also respect exclusion enabled in another tab after this page was opened.
+    try { if (localStorage.getItem('hanviet-analytics-opt-out') === '1') return; } catch {}
     if (Date.now() - session.time > 1800000) session = {id:uuid(),time:Date.now(),referrer:'',source:'',campaign:''};
     touch();
     if (!window.HANVIET_SUPABASE_URL || !window.HANVIET_SUPABASE_KEY) return;
