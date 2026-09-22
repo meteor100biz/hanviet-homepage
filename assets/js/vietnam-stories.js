@@ -3,6 +3,10 @@
     return value === undefined || value === null ? '' : String(value);
   }
 
+  function normalizeLink(value) {
+    return text(value).replace(/^(vietnam-stories\/[^/]+)\/(?:index\.html)?$/, '$1/');
+  }
+
   function createStoryCard(item) {
     var article = document.createElement('article');
     var wrapper = article;
@@ -43,10 +47,10 @@
     }
 
     var featured = Array.isArray(data.featured) ? data.featured : [];
-    var items = featured.length
+    var items = Array.isArray(data.featured)
       ? featured.map(function (key) {
         return data.items.find(function (item) {
-          return item.link === key || item.title === key || item.image === key;
+          return normalizeLink(item.link) === normalizeLink(key) || item.title === key || item.image === key;
         });
       }).filter(Boolean)
       : data.items;
