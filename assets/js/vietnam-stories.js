@@ -46,14 +46,7 @@
       return;
     }
 
-    var featured = Array.isArray(data.featured) ? data.featured : [];
-    var items = Array.isArray(data.featured)
-      ? featured.map(function (key) {
-        return data.items.find(function (item) {
-          return normalizeLink(item.link) === normalizeLink(key) || item.title === key || item.image === key;
-        });
-      }).filter(Boolean)
-      : data.items;
+    var items = data.items;
 
     grid.innerHTML = '';
     items.slice(0, 6).forEach(function (item) {
